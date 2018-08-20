@@ -4,5 +4,4 @@
 
 ## Check out the link below in order to see your matches!
 
-https://whispering-wave-77834.herokuapp.com/ - automatic!
-[FriendFinder](https://whispering-wave-77834.herokuapp.com/)
+[friend-finder!](https://whispering-wave-77834.herokuapp.com/)
