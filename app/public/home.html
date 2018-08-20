@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>FriendFinder</title>
+    
+        <!-- Latest compiled and minified CSS & JS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body {
+                background: url('spaceBG.jpg') no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+        
+            a {
+                color: rgb(236, 157, 10);
+                font-size: 20px;
+            }
+            a:hover{
+                color: skyblue;
+            }
+            .btn-warning:hover {
+                background-color: yellow;
+            }
+            h1,
+            h2 {
+                text-align: center;
+                color: rgb(236, 157, 10) !important;
+                text-shadow: -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
+            }
+            h4 {
+                color: rebeccapurple;
+            }
+            .jumbotron {
+                background: none;
+            }
+        </style>
+    </head>
+  <body>
+  
+    <div class="container">
+  
+      <div class="jumbotron">
+        <h1><i class="fa fa-grav" style="font-size:48px;color:rgb(236, 157, 10)"></i> Friend Finder <i class="fa fa-grav" style="font-size:48px;color:rgb(236, 157, 10)"></i></h1>
+        <h2>Answer a few basic questions, </h2>
+        <h2>and find out if you are really not the same and are a martian</h2>
+        <br>
+  
+        <div class='text-center'>
+          <a href="/survey"><button type="button" class="btn btn-lg btn-warning"><h4><span class="glyphicon glyphicon-list-alt"></span> Go to Survey</h4></button></a>
+        </div>
+  
+      </div>
+  
+      <footer class="footer">
+        <div class="container text-center">
+          <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/ashalkey/friend-finder">GitHub Repo</a></p>
+        </div>
+      </footer>
+  
+    </div>
+  
+  
+  
+  
+  </body></html>
