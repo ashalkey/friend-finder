@@ -282,7 +282,7 @@
                   $("#q7").val(),
                   $("#q8").val(),
                   $("#q9").val(),
-                  $("#q10").val()
+                  $("#q10").val(),
                 ]
               };
       
@@ -294,10 +294,21 @@
                         var match = {
                               name: "",
                               photo: "",
-                              score: 100
+                              scores: [
+                                5,
+                                5,
+                                5,
+                                5,
+                                5,
+                                5,
+                                5,
+                                5,
+                                5,
+                                5
+                              ]
                           };
                           var friendsScoreDifference = [];
-                          for (var i = 0; i < data.length; i++) {
+                          for (var i = 0; i < data.length - 1; i++) {
 
                               
                             for (var j = 0; j < data[i].scores.length; j++){
@@ -305,8 +316,9 @@
                             }
                             console.log(friendsScoreDifference);
                             console.log("The sum of the friendsScoreDifference is: " + friendsScoreDifference.reduce((a, b) => a + b, 0));
-                            if (friendsScoreDifference.reduce((a, b) => a + b, 0) < match.score) {
+                            if (friendsScoreDifference.reduce((a, b) => a + b, 0) < match.scores.reduce((c, d) => c + d, 0)) {
                                 match = data[i];
+                                console.log(match);
                             }
                           }
                           $("#match-name").text(match.name);
