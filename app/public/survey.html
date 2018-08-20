@@ -16,13 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
     <style>
-        body {
-            background: url('spaceBG.jpg') no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
 
         a {
             color: rgb(236, 157, 10);
@@ -39,10 +32,6 @@
         h4 {
             text-align: center;
             color: rgb(236, 157, 10) !important;
-            text-shadow: -1px -1px 0 #000,
-            1px -1px 0 #000,
-            -1px 1px 0 #000,
-            1px 1px 0 #000;
         }
     </style>
 </head>
@@ -203,7 +192,7 @@
       
           <hr>
           <footer class="footer">
-            <div class="container">
+            <div class="container text-center">
               <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a></p>
             </div>
           </footer>
@@ -298,20 +287,41 @@
                 ]
               };
       
-              // AJAX post the data to the friends API.
-              $.post("/api/friends", userData, function(data) {
-      
-                // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-                $("#match-name").text(data.name);
-                $("#match-img").attr("src", data.photo);
-      
-                // Show the modal with the best match
-                $("#results-modal").modal("toggle");
-      
-              });
-            } else {
-              alert("Please fill out all fields before submitting!");
-            }
+                  // AJAX post the data to the friends API.
+                  $.post("/api/friends", userData, function (data) {
+
+                      $.get("/api/friends", function (data) {
+                        console.log(data);
+                        var match = {
+                              name: "",
+                              photo: "",
+                              score: 100
+                          };
+                          var friendsScoreDifference = [];
+                          for (var i = 0; i < data.length; i++) {
+
+                              
+                            for (var j = 0; j < data[i].scores.length; j++){
+                                friendsScoreDifference.push(Math.abs(userData.scores[j] - data[i].scores[j]));
+                            }
+                            console.log(friendsScoreDifference);
+                            console.log("The sum of the friendsScoreDifference is: " + friendsScoreDifference.reduce((a, b) => a + b, 0));
+                            if (friendsScoreDifference.reduce((a, b) => a + b, 0) < match.score) {
+                                match = data[i];
+                            }
+                          }
+                          $("#match-name").text(match.name);
+                          $("#match-img").attr("src", match.photo);
+
+                          // Show the modal with the best match
+                          $("#results-modal").modal("toggle");
+
+                      });
+
+                  });
+              } else {
+                  alert("Please fill out all fields before submitting!");
+              }
           });
         </script>
       
